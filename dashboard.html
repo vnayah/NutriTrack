@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NutriTrack Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="nav-logo">
+        🥗 NutriTrack
+    </div>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="contact.html">Contact</a>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </nav>
+
+</header>
+
+
+<main class="dashboard">
+
+    <section class="welcome-section">
+
+        <div>
+            <h1 id="greeting">Hello 👋</h1>
+            <p id="usernameText">Welcome to your nutrition dashboard.</p>
+        </div>
+
+    </section>
+
+
+    <!-- NUTRITION SUMMARY -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card">
+            <span>🔥</span>
+            <h3>Calories</h3>
+            <p>
+                <strong id="calorieValue">0</strong> kcal
+            </p>
+            <small>Daily target: 2000 kcal</small>
+        </div>
+
+        <div class="summary-card">
+            <span>💪</span>
+            <h3>Protein</h3>
+            <p>
+                <strong id="proteinValue">0</strong> g
+            </p>
+            <small>Daily target: 60 g</small>
+        </div>
+
+        <div class="summary-card">
+            <span>🥑</span>
+            <h3>Carbohydrates</h3>
+            <p>
+                <strong id="carbsValue">0</strong> g
+            </p>
+            <small>Daily target: 250 g</small>
+        </div>
+
+        <div class="summary-card">
+            <span>💧</span>
+            <h3>Water</h3>
+            <p>
+                <strong id="waterValue">0</strong> ml
+            </p>
+            <small>Daily target: 2000 ml</small>
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <section class="section-card">
+
+        <h2>🔍 Search Food</h2>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="foodSearch"
+                placeholder="Search food..."
+            >
+
+            <button id="searchBtn" class="primary-btn">
+                Search
+            </button>
+
+        </div>
+
+        <p id="searchMessage"></p>
+
+        <div id="foodResults" class="food-grid"></div>
+
+    </section>
+
+
+    <!-- TODAY'S FOOD -->
+
+    <section class="section-card">
+
+        <div class="section-title">
+
+            <h2>🍽️ Today's Food</h2>
+
+            <button id="clearFoodBtn" class="small-btn">
+                Clear
+            </button>
+
+        </div>
+
+        <div id="todayFood" class="today-food">
+
+            <p class="empty-text">
+                No food added yet.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- WATER -->
+
+    <section class="section-card">
+
+        <h2>💧 Water Tracker</h2>
+
+        <div class="water-buttons">
+
+            <button class="water-btn" data-water="250">
+                +250 ml
+            </button>
+
+            <button class="water-btn" data-water="500">
+                +500 ml
+            </button>
+
+            <button class="water-btn" data-water="750">
+                +750 ml
+            </button>
+
+            <button id="resetWater" class="small-btn">
+                Reset
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- NUTRITION SCORE -->
+
+    <section class="score-card">
+
+        <h2>⭐ Today's Nutrition Score</h2>
+
+        <div class="score-circle">
+            <span id="nutritionScore">0</span>
+            <small>/100</small>
+        </div>
+
+        <p id="scoreMessage">
+            Start adding your food to see your score.
+        </p>
+
+    </section>
+
+</main>
+    
+    <!-- FOOTER SECTION -->
+
+<footer class="footer">
+
+    <h3>🥗 NutriTrack</h3>
+
+    <p>
+        Track your food, monitor your nutrition,
+        and stay healthy.
+    </p>
+
+    <div class="footer-links">
+        <a href="dashboard.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <p class="copyright">
+        &copy2026 NutriTrack. All rights reserved.
+    </p>
+
+</footer>
+
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

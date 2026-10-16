@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>NutriTrack - Contact</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="nav-logo">
+        🥗 NutriTrack
+    </div>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="contact.html">Contact</a>
+        <button id="logoutBtn" class="logout-btn">
+            Logout
+        </button>
+    </nav>
+
+</header>
+
+
+<main class="contact-container">
+
+    <div class="section-card">
+
+        <h1>📩 Contact Us</h1>
+
+        <p>
+            Have a question or feedback?
+            Send us a message.
+        </p>
+
+        <form id="contactForm">
+
+            <label>Name</label>
+
+            <input
+                type="text"
+                name="name"
+                id="contactName"
+                placeholder="Your name"
+            >
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                name="email"
+                id="contactEmail"
+                placeholder="Your email"
+            >
+
+            <label>Message</label>
+
+            <textarea
+                name="message"
+                id="contactMessage"
+                rows="5"
+                placeholder="Write your message..."
+            ></textarea>
+
+            <p id="contactError" class="error"></p>
+
+            <button
+                type="submit"
+                class="primary-btn">
+                Send Message
+            </button>
+
+        </form>
+
+        <p id="emailStatus"></p>
+
+    </div>
+
+</main>
+
+
+<!-- EmailJS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+<script src="contact.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriTrack - Signup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="auth-body">
+
+<div class="auth-container">
+
+    <div class="brand">
+        <div class="logo">🥗</div>
+        <h1>NutriTrack</h1>
+        <p>Create your personal nutrition account</p>
+    </div>
+
+    <form id="signupForm">
+
+        <label>Full Name</label>
+        <input type="text" id="signupName" placeholder="Enter your name">
+
+        <label>Email</label>
+        <input type="email" id="signupEmail" placeholder="Enter your email">
+
+        <label>Password</label>
+        <input type="password" id="signupPassword" placeholder="Minimum 6 characters">
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm password">
+
+        <p id="signupError" class="error"></p>
+
+        <button type="submit" class="primary-btn">Sign Up</button>
+
+    </form>
+
+    <p class="switch-text">
+        Already have an account?
+        <a href="index.html">Login</a>
+    </p>
+
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>
