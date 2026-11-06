@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriTrack - My Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <main class="profile-page">
+
+        <nav class="profile-nav">
+            <a class="brand" href="dashboard.html">
+                🥗 NutriTrack
+            </a>
+
+            <div class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html" id="logoutLink">Logout</a>
+            </div>
+        </nav>
+
+        <section class="profile-card">
+            <h1>My Profile</h1>
+
+            <p>
+                Save your details to receive food suggestions
+                tailored to your goal and food preference.
+            </p>
+
+            <form id="profileForm">
+
+                <div class="profile-grid">
+
+                    <div class="profile-field full">
+                        <label for="profileNameInput">Name</label>
+
+                        <input
+                            id="profileNameInput"
+                            name="name"
+                            type="text"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="profile-field">
+                        <label for="age">Age</label>
+
+                        <input
+                            id="age"
+                            name="age"
+                            type="number"
+                            min="1"
+                            max="120"
+                            required
+                        >
+                    </div>
+
+                    <div class="profile-field">
+                        <label for="weight">Weight (kg)</label>
+
+                        <input
+                            id="weight"
+                            name="weight"
+                            type="number"
+                            min="1"
+                            max="500"
+                            step="0.1"
+                            required
+                        >
+                    </div>
+
+                    <div class="profile-field">
+                        <label for="height">Height (cm)</label>
+
+                        <input
+                            id="height"
+                            name="height"
+                            type="number"
+                            min="30"
+                            max="270"
+                            step="0.1"
+                            required
+                        >
+                    </div>
+
+                    <div class="profile-field">
+                        <label for="activity">Activity Level</label>
+
+                        <select id="activity" name="activity">
+                            <option value="">
+                                Select activity level (optional)
+                            </option>
+                            <option value="low">
+                                Low / Mostly sitting
+                            </option>
+                            <option value="moderate">
+                                Moderate
+                            </option>
+                            <option value="high">
+                                High / Very active
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="profile-field">
+                        <label for="goal">Nutrition Goal</label>
+
+                        <select id="goal" name="goal" required>
+                            <option value="">
+                                Select your goal
+                            </option>
+                            <option value="lose">
+                                Weight Loss
+                            </option>
+                            <option value="gain">
+                                Weight Gain
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="profile-field">
+                        <label for="foodPreference">
+                            Food Preference
+                        </label>
+
+                        <select
+                            id="foodPreference"
+                            name="foodPreference"
+                            required
+                        >
+                            <option value="">
+                                Select food preference
+                            </option>
+                            <option value="veg">Veg</option>
+                            <option value="non-veg">Non-Veg</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+
+                    <div class="profile-field full">
+                        <label for="allergies">
+                            Food Allergies (optional)
+                        </label>
+
+                        <textarea
+                            id="allergies"
+                            name="allergies"
+                            placeholder="Example: peanut, milk, egg. Separate multiple entries with commas."
+                        ></textarea>
+
+                        <span class="profile-help">
+                            Food-name matching is only a basic guide.
+                            Always check ingredient labels and consult
+                            a qualified professional about serious allergies.
+                        </span>
+                    </div>
+
+                </div>
+
+                <button class="profile-submit" type="submit">
+                    Save Profile
+                </button>
+
+                <p
+                    id="profileMessage"
+                    class="profile-message"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+
+            <section class="bmi-card" aria-live="polite">
+                <h2>BMI Analysis</h2>
+
+                <p>
+                    BMI: <strong id="bmiValue">--</strong>
+                </p>
+
+                <p id="bmiCategory">
+                    Enter valid weight and height
+                </p>
+            </section>
+
+        </section>
+    </main>
+
+    <script src="profile.js"></script>
+</body>
+</html>

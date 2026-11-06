@@ -1,101 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutriTrack - Contact</title>
-
     <link rel="stylesheet" href="style.css">
-
+    <script src="auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="contact.js" defer></script>
 </head>
-
 <body>
-
-<header class="navbar">
-
-    <div class="nav-logo">
-        🥗 NutriTrack
-    </div>
-
-    <nav>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="contact.html">Contact</a>
-        <button id="logoutBtn" class="logout-btn">
-            Logout
-        </button>
+    <nav class="navbar">
+        <a href="dashboard.html" class="nav-brand">
+            🥗 NutriTrack
+        </a>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="contact.html" aria-current="page">Contact</a>
+            <button type="button" id="logoutBtn" class="logout-btn">
+                Logout
+            </button>
+        </div>
     </nav>
 
-</header>
+    <main class="contact-container">
+        <section class="contact-card">
+            <header class="page-heading">
+                <h1>Contact Us</h1>
+                <p>
+                    Have a question or feedback?
+                    Send us a message.
+                </p>
+            </header>
 
+            <form id="contactForm">
 
-<main class="contact-container">
+                <label for="contactName">Your Name</label>
+                <input
+                    type="text"
+                    id="contactName"
+                    name="name"
+                    placeholder="Enter your name"
+                    maxlength="100"
+                    autocomplete="name"
+                    required
+                >
 
-    <div class="section-card">
+                <label for="contactEmail">Email Address</label>
+                <input
+                    type="email"
+                    id="contactEmail"
+                    name="email"
+                    placeholder="Enter your email"
+                    maxlength="254"
+                    autocomplete="email"
+                    required
+                >
 
-        <h1>📩 Contact Us</h1>
+                <label for="contactMessage">Your Message</label>
+                <textarea
+                    id="contactMessage"
+                    name="message"
+                    placeholder="Write your message here..."
+                    rows="6"
+                    maxlength="3000"
+                    required
+                ></textarea>
 
+                <p
+                    id="contactError"
+                    class="error"
+                    role="alert"
+                    aria-live="polite"
+                ></p>
+
+                <p
+                    id="emailStatus"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+                <button
+                    type="submit"
+                    id="contactSubmitBtn"
+                    class="primary-btn"
+                >
+                    Send Message
+                </button>
+
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
         <p>
-            Have a question or feedback?
-            Send us a message.
+            Track your food, monitor your nutrition, and stay healthy.
         </p>
-
-        <form id="contactForm">
-
-            <label>Name</label>
-
-            <input
-                type="text"
-                name="name"
-                id="contactName"
-                placeholder="Your name"
-            >
-
-            <label>Email</label>
-
-            <input
-                type="email"
-                name="email"
-                id="contactEmail"
-                placeholder="Your email"
-            >
-
-            <label>Message</label>
-
-            <textarea
-                name="message"
-                id="contactMessage"
-                rows="5"
-                placeholder="Write your message..."
-            ></textarea>
-
-            <p id="contactError" class="error"></p>
-
-            <button
-                type="submit"
-                class="primary-btn">
-                Send Message
-            </button>
-
-        </form>
-
-        <p id="emailStatus"></p>
-
-    </div>
-
-</main>
-
-
-<!-- EmailJS -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-
-<script src="contact.js"></script>
+        <p>&copy; 2026 NutriTrack. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>

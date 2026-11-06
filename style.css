@@ -4,13 +4,54 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f8f5;
-    color: #243024;
+:root {
+    --primary-green: #4caf50;
+    --dark-green: #2e7d32;
+    --hover-green: #388e3c;
+    --light-green: #66bb6a;
+    --auth-bg: #eaf5eb;
+    --page-bg: #f5f8f5;
+    --text-color: #243024;
+    --water-blue: #42a5f5;
+    --logout-red: #ef5350;
+    --score-border: #81c784;
+    --success-green: #20e287;
+    --white: #ffffff;
+    --border-color: #dce5dc;
 }
 
-/* AUTH */
+body {
+    font-family: Arial, sans-serif;
+    background: var(--page-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--dark-green);
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* =====================================
+   LOGIN AND SIGNUP
+===================================== */
 
 .auth-body {
     min-height: 100vh;
@@ -18,16 +59,16 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background: #eaf5eb;
+    background: var(--auth-bg);
 }
 
 .auth-container {
     width: 100%;
     max-width: 420px;
-    background: white;
     padding: 35px;
+    background: var(--white);
     border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 20px rgba(46, 125, 50, 0.10);
 }
 
 .brand {
@@ -36,406 +77,948 @@ body {
 }
 
 .logo {
-    font-size: 45px;
-}
-
-.brand h1 {
-    color: #2e7d32;
-    margin: 8px 0;
-}
-
-.brand p {
-    color: #777;
-}
-
-
-/* FORM */
-
-label {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 7px;
-    font-weight: bold;
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
-    outline: none;
-}
-
-input:focus,
-textarea:focus {
-    border-color: #4caf50;
-}
-
-.primary-btn {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #4caf50;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.primary-btn:hover {
-    background: #388e3c;
-}
-
-.error {
-    color: #d32f2f;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.switch-text {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.switch-text a {
-    color: #2e7d32;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-
-/* NAVBAR */
-
-.navbar {
-    background: white;
-    padding: 15px 6%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.nav-logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: #2e7d32;
-}
-
-.navbar nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: #333;
-}
-
-.logout-btn {
-    background: #ef5350;
-    border: none;
-    padding: 9px 15px;
-    color: white;
-    border-radius: 7px;
-    cursor: pointer;
-}
-
-
-/* DASHBOARD */
-
-.dashboard {
-    width: 90%;
-    max-width: 1200px;
-    margin: 30px auto;
-}
-
-.welcome-section {
-    margin-bottom: 25px;
-}
-
-.welcome-section h1 {
-    color: #2e7d32;
+    font-size: 40px;
     margin-bottom: 5px;
 }
 
-
-/* SUMMARY */
-
-.summary-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    margin-bottom: 25px;
-}
-
-.summary-card {
-    background: white;
-    padding: 22px;
-    border-radius: 14px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
-}
-
-.summary-card span {
+.brand h1 {
+    color: var(--dark-green);
     font-size: 30px;
 }
 
-.summary-card h3 {
-    margin: 10px 0;
+.brand p {
+    color: #607060;
+    margin-top: 5px;
 }
 
-.summary-card strong {
-    font-size: 25px;
-    color: #2e7d32;
-}
-
-
-/* SECTIONS */
-
-.section-card {
-    background: white;
-    padding: 25px;
-    border-radius: 14px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
-}
-
-.section-card h2 {
-    margin-bottom: 18px;
-}
-
-.search-box {
+.auth-container form {
     display: flex;
-    gap: 10px;
-}
-
-.search-box input {
-    flex: 1;
-}
-
-.search-box .primary-btn {
-    width: auto;
-    margin-top: 0;
-}
-
-
-/* FOOD */
-
-.food-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    flex-direction: column;
     gap: 15px;
     margin-top: 20px;
 }
 
-.food-card {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 10px;
+.auth-container label,
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
 }
 
-.food-card h3 {
-    margin-bottom: 8px;
-}
-
-.food-card p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
-}
-
-.add-btn {
-    border: none;
-    background: #66bb6a;
-    color: white;
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-
-/* TODAY FOOD */
-
-.section-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.small-btn {
-    border: none;
-    background: #eeeeee;
-    padding: 8px 13px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.food-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding: 12px 0;
-}
-
-.remove-btn {
-    border: none;
-    background: #ffebee;
-    color: #d32f2f;
-    padding: 6px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.empty-text {
-    color: #777;
-}
-
-
-/* WATER */
-
-.water-buttons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.water-btn {
-    border: none;
-    background: #42a5f5;
-    color: white;
-    padding: 12px 18px;
+.auth-container input,
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    cursor: pointer;
+    background: var(--white);
+    color: var(--text-color);
+    outline: none;
+    transition: border-color 0.2s;
 }
 
+.auth-container input:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-green);
+}
 
-/* SCORE */
+.primary-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 18px;
+    background: var(--primary-green);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
 
-.score-card {
-    background: white;
-    padding: 30px;
-    border-radius: 14px;
+.primary-btn:hover {
+    background: var(--hover-green);
+}
+
+.secondary-btn {
+    padding: 10px 16px;
+    background: var(--auth-bg);
+    color: var(--dark-green);
+    border: 1px solid var(--score-border);
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.secondary-btn:hover {
+    background: #d9eedb;
+}
+
+.switch-text {
+    margin-top: 20px;
     text-align: center;
+    color: #607060;
+}
+
+.switch-text a {
+    font-weight: bold;
+}
+
+.error {
+    color: #c62828;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* =====================================
+   NAVBAR
+===================================== */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 16px 5%;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(36, 48, 36, 0.08);
+}
+
+.nav-brand {
+    color: var(--dark-green);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--dark-green);
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: var(--primary-green);
+}
+
+.logout-btn {
+    padding: 9px 16px;
+    border: none;
+    border-radius: 7px;
+    background: var(--logout-red);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background: #e53935;
+}
+
+/* =====================================
+   COMMON PAGE LAYOUT
+===================================== */
+
+.dashboard-container,
+.profile-container,
+.contact-container {
+    width: 90%;
+    max-width: 1150px;
+    margin: 30px auto;
+}
+
+.dashboard-header,
+.page-heading {
+    margin-bottom: 25px;
+}
+
+.dashboard-header h1,
+.page-heading h1 {
+    color: var(--dark-green);
+    margin-bottom: 5px;
+}
+
+.dashboard-header p,
+.page-heading p {
+    color: #607060;
+}
+
+section {
+    margin-bottom: 25px;
+}
+
+section h2 {
+    color: var(--dark-green);
+    margin-bottom: 15px;
+}
+
+/* =====================================
+   DASHBOARD SUMMARY CARDS
+===================================== */
+
+.summary-section {
     margin-bottom: 30px;
 }
 
-.score-circle {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 10px solid #81c784;
-    margin: 20px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
 }
 
-.score-circle span {
-    font-size: 30px;
+.summary-card {
+    padding: 22px;
+    background: var(--white);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-green);
+    box-shadow: 0 3px 12px rgba(36, 48, 36, 0.07);
+}
+
+.summary-card h3 {
+    color: #607060;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.summary-card p {
+    color: var(--dark-green);
+    font-size: 25px;
     font-weight: bold;
-    color: #2e7d32;
+    margin-top: 8px;
 }
 
-.score-circle small {
-    color: #777;
+/* =====================================
+   FOOD SEARCH
+===================================== */
+
+.food-section,
+.today-food-section,
+.water-section,
+.nutrition-score-section,
+.suggestions-section {
+    padding: 22px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(36, 48, 36, 0.06);
 }
 
-
-/* CONTACT */
-
-.contact-container {
-    width: 90%;
-    max-width: 650px;
-    margin: 40px auto;
-}
-
-/* FOOTER SECTION */
-
-.footer {
-    background:  #2e7d32;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 40px;
-}
-
-.footer h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.footer p {
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 10px 0;
-}
-
-.footer-links {
+.search-container,
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin: 15px 0;
 }
 
-.footer-links a {
-    color: #20e287;
-    text-decoration: none;
-    margin: 0 12px;
+.search-container input,
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 13px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    outline: none;
 }
 
-.footer-links a:hover {
-    text-decoration: underline;
+.search-container input:focus,
+.search-box input:focus {
+    border-color: var(--primary-green);
 }
 
-.footer .copyright {
-    border-top: 1px solid #d7dde4;
-    padding-top: 15px;
+.search-container button,
+.search-box button {
+    padding: 11px 18px;
+    background: var(--primary-green);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+}
+
+.search-container button:hover,
+.search-box button:hover {
+    background: var(--hover-green);
+}
+
+#searchMessage {
+    margin-top: 10px;
+    color: var(--dark-green);
+}
+
+/* =====================================
+   FOOD RESULT CARDS
+===================================== */
+
+.food-results {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
     margin-top: 20px;
-    font-size: 12px;
 }
 
+.food-card {
+    padding: 18px;
+    background: var(--white);
+    border: 1px solid #e2eae2;
+    border-radius: 10px;
+    transition: box-shadow 0.2s;
+}
 
-/* RESPONSIVE */
+.food-card:hover {
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.10);
+}
+
+.food-card h3 {
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+.food-card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.add-btn {
+    margin-top: 12px;
+    padding: 9px 14px;
+    background: var(--light-green);
+    color: var(--white);
+    border: none;
+    border-radius: 7px;
+}
+
+.add-btn:hover {
+    background: var(--primary-green);
+}
+
+.remove-btn {
+    margin-top: 10px;
+    padding: 8px 13px;
+    background: var(--logout-red);
+    color: var(--white);
+    border: none;
+    border-radius: 7px;
+}
+
+.remove-btn:hover {
+    background: #e53935;
+}
+
+/* =====================================
+   TODAY'S FOOD
+===================================== */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.today-food-list {
+    display: grid;
+    gap: 12px;
+}
+
+.today-food-list .food-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.today-food-list p {
+    color: #607060;
+}
+
+#clearFoodBtn,
+#resetWater {
+    padding: 9px 14px;
+    border: none;
+    border-radius: 7px;
+    background: var(--logout-red);
+    color: var(--white);
+}
+
+#clearFoodBtn:hover,
+#resetWater:hover {
+    background: #e53935;
+}
+
+/* =====================================
+   WATER TRACKER
+===================================== */
+
+.water-section {
+    border-left: 4px solid var(--water-blue);
+}
+
+.water-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.water-btn {
+    padding: 10px 18px;
+    background: var(--water-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    transition: opacity 0.2s;
+}
+
+.water-btn:hover {
+    opacity: 0.85;
+}
+
+/* =====================================
+   NUTRITION SCORE
+===================================== */
+
+.nutrition-score-section {
+    text-align: center;
+    border: 2px solid var(--score-border);
+}
+
+.nutrition-score {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
+    min-height: 100px;
+    margin: 10px auto;
+    padding: 15px;
+    border: 5px solid var(--score-border);
+    border-radius: 50%;
+    color: var(--dark-green);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#scoreMessage {
+    color: #607060;
+    margin-top: 10px;
+}
+
+/* =====================================
+   FOOD SUGGESTIONS
+===================================== */
+
+.suggestions-section {
+    margin-bottom: 25px;
+}
+
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.suggestion-card {
+    padding: 18px;
+    background: var(--auth-bg);
+    border: 1px solid #d5e8d6;
+    border-radius: 10px;
+}
+
+.suggestion-card h3 {
+    color: var(--dark-green);
+    margin-bottom: 8px;
+}
+
+.suggestion-card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* =====================================
+   PROFILE PAGE
+===================================== */
+
+.profile-card {
+    max-width: 750px;
+    margin: 0 auto 25px;
+    padding: 28px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(36, 48, 36, 0.07);
+}
+
+.profile-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    margin-bottom: 4px;
+}
+
+.form-group textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.bmi-section {
+    margin-top: 25px;
+    padding: 20px;
+    background: var(--auth-bg);
+    border: 1px solid var(--score-border);
+    border-radius: 10px;
+}
+
+.bmi-section h2 {
+    color: var(--dark-green);
+}
+
+#bmiValue {
+    color: var(--dark-green);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#bmiCategory {
+    color: var(--text-color);
+}
+
+.help-text {
+    color: #607060;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+#profileMessage {
+    margin-top: 12px;
+}
+
+/* =====================================
+   CONTACT PAGE
+===================================== */
+
+.contact-card {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 28px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(36, 48, 36, 0.07);
+}
+
+.contact-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-card textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+#emailStatus {
+    margin-top: 12px;
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.footer {
+    padding: 22px 15px;
+    margin-top: 35px;
+    background: var(--white);
+    color: #607060;
+    text-align: center;
+    border-top: 1px solid #e2eae2;
+}
+
+.footer p {
+    margin: 4px 0;
+}
+
+/* =====================================
+   TABLET RESPONSIVE
+===================================== */
 
 @media (max-width: 800px) {
-
     .summary-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .food-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .food-results,
+    .suggestions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .navbar {
+        padding: 15px 4%;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .dashboard-container,
+    .profile-container,
+    .contact-container {
+        width: 92%;
+    }
+}
+/* =====================================
+   NUTRITRACK - PROFILE PAGE STYLING
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f7f9f7;
+    color: #243024;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+.profile-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 40px;
+}
+
+/* ===== NAVBAR ===== */
+
+.profile-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 16px 30px;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(36, 48, 36, 0.08);
+}
+
+.profile-nav .brand {
+    color: var(--dark-green);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-nav .nav-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.profile-nav .nav-links a {
+    color: var(--dark-green);
+    font-weight: bold;
+}
+
+.profile-nav .nav-links a:hover {
+    color: var(--primary-green);
+}
+
+
+/* Logout button */
+
+.profile-nav .nav-links a#logoutLink {
+    padding: 9px 17px;
+    border-radius: 6px;
+    background: #a52a2a;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.profile-nav .nav-links a#logoutLink {
+    background: #ef5350;
+}
+
+/* ===== PROFILE CARD ===== */
+
+.profile-card {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: clamp(20px, 4vw, 34px);
+    background: #ffffff;
+    border: 1px solid #edf0ed;
+    border-radius: 16px;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.06);
+}
+
+.profile-card h1 {
+    margin: 0 0 6px;
+    color: #256628;
+    font-size: clamp(24px, 3vw, 30px);
+    line-height: 1.3;
+}
+
+.profile-card > p {
+    margin: 0 0 22px;
+    color: #657065;
+    font-size: 14px;
+}
+
+/* ===== PROFILE FORM GRID ===== */
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.profile-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.profile-field label {
+    color: #303b30;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.profile-field input,
+.profile-field select,
+.profile-field textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid #d6ddd6;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #243024;
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.profile-field input:focus,
+.profile-field select:focus,
+.profile-field textarea:focus {
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+
+.profile-field textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.profile-field.full {
+    grid-column: 1 / -1;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+
+.profile-submit {
+    margin-top: 20px;
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 8px;
+    background: #2e7d32;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+.profile-submit:hover {
+    background: #256628;
+}
+
+.profile-submit:active {
+    transform: scale(0.98);
+}
+
+/* ===== MESSAGE / VALIDATION ===== */
+
+.profile-message {
+    min-height: 1.5em;
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* ===== BMI CARD ===== */
+
+.bmi-card {
+    margin-top: 20px;
+    padding: 18px;
+    border: 1px solid #d9eadb;
+    border-radius: 12px;
+    background: #eaf5eb;
+}
+
+.bmi-card h2 {
+    margin: 0 0 8px;
+    color: #2e7d32;
+    font-size: 20px;
+}
+
+.profile-help {
+    color: #536453;
+    font-size: 0.92rem;
+}
+
+/* ===== TABLET & MOBILE ===== */
+
+@media (max-width: 600px) {
+    .profile-page {
+        padding: 0 14px 28px;
+    }
+
+    .profile-nav {
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 14px 0;
+    }
+
+    .profile-nav .brand {
+        font-size: 19px;
+    }
+
+    .profile-nav .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .profile-nav .nav-links a {
+        font-size: 13px;
+    }
+
+    .profile-nav .nav-links a#logoutLink {
+        padding: 8px 12px;
+    }
+
+    .profile-card {
+        padding: 20px 16px;
+        border-radius: 12px;
+    }
+
+    .profile-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .profile-field.full {
+        grid-column: auto;
+    }
+
+    .profile-submit {
+        width: 100%;
+    }
+}
+
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
+@media (max-width: 500px) {
+    .auth-container {
+        padding: 25px 20px;
+    }
+
+    .brand h1 {
+        font-size: 26px;
     }
 
     .navbar {
         flex-direction: column;
-        gap: 15px;
+        align-items: flex-start;
+        gap: 12px;
     }
 
-}
+    .nav-links {
+        width: 100%;
+        gap: 12px;
+    }
 
-@media (max-width: 500px) {
+    .dashboard-container,
+    .profile-container,
+    .contact-container {
+        width: 92%;
+        margin: 20px auto;
+    }
 
-    .summary-grid {
+    .summary-grid,
+    .food-results,
+    .suggestions-grid {
         grid-template-columns: 1fr;
     }
 
-    .food-grid {
-        grid-template-columns: 1fr;
+    .summary-card,
+    .food-card,
+    .suggestion-card {
+        padding: 17px;
     }
 
+    .food-section,
+    .today-food-section,
+    .water-section,
+    .nutrition-score-section,
+    .suggestions-section {
+        padding: 17px;
+    }
+
+    .profile-card,
+    .contact-card {
+        padding: 20px 16px;
+    }
+
+    .search-container,
     .search-box {
         flex-direction: column;
+        align-items: stretch;
     }
 
-    .search-box .primary-btn {
+    .search-container button,
+    .search-box button {
         width: 100%;
     }
 
-    .auth-container {
-        padding: 25px;
+    .section-heading {
+        align-items: flex-start;
     }
 
+    .today-food-list .food-card {
+        align-items: flex-start;
+    }
+
+    .water-buttons {
+        gap: 8px;
+    }
+
+    .water-btn {
+        flex: 1 1 28%;
+        padding: 10px;
+    }
+
+    .nutrition-score {
+        min-width: 85px;
+        min-height: 85px;
+        font-size: 24px;
+    }
 }

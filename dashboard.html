@@ -3,208 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>NutriTrack Dashboard</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="navbar">
-
-    <div class="nav-logo">
-        🥗 NutriTrack
-    </div>
-
-    <nav>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="contact.html">Contact</a>
-        <button id="logoutBtn" class="logout-btn">Logout</button>
+    <nav class="navbar">
+        <a href="dashboard.html" class="nav-brand">🥗 NutriTrack</a>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="contact.html">Contact</a>
+            <button type="button" id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
     </nav>
 
-</header>
+    <main class="dashboard-container">
 
-
-<main class="dashboard">
-
-    <section class="welcome-section">
-
-        <div>
+        <header class="dashboard-header">
             <h1 id="greeting">Hello 👋</h1>
             <p id="usernameText">Welcome to your nutrition dashboard.</p>
-        </div>
+        </header>
 
-    </section>
+        <section class="summary-section">
+            <h2>Today's Nutrition</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Calories</h3>
+                    <p id="calorieValue">0 kcal</p>
+                    <small>Daily Target: 2000 kcal</small>
+                </div>
+                <div class="summary-card">
+                    <h3>Protein</h3>
+                    <p id="proteinValue">0 g</p>
+                    <small>Daily Target: 60 g</small>
+                </div>
+                <div class="summary-card">
+                    <h3>Carbohydrates</h3>
+                    <p id="carbsValue">0 g</p>
+                    <small>Daily Target: 250 g</small>
+                </div>
+                <div class="summary-card">
+                    <h3>Water</h3>
+                    <p id="waterValue">0 ml</p>
+                    <small>Daily Target: 2000 ml</small>
+                </div>
+            </div>
+        </section>
 
+        <section class="food-section">
+            <h2>Search Food 🔍</h2>
+            <p>Type a food name to find its nutrition information.</p>
 
-    <!-- NUTRITION SUMMARY -->
+            <div class="search-container">
+                <input
+                    type="search"
+                    id="foodSearch"
+                    placeholder="Type food name here..."
+                    autocomplete="off"
+                    aria-label="Search foods"
+                >
+                <button type="button" id="searchBtn">Search</button>
+            </div>
 
-    <section class="summary-grid">
+            <p id="searchMessage" aria-live="polite">Loading foods...</p>
+            <div id="foodResults" class="food-results"></div>
+        </section>
 
-        <div class="summary-card">
-            <span>🔥</span>
-            <h3>Calories</h3>
-            <p>
-                <strong id="calorieValue">0</strong> kcal
-            </p>
-            <small>Daily target: 2000 kcal</small>
-        </div>
+        <section class="today-food-section">
+            <div class="section-heading">
+                <h2>Today's Food 🍽️</h2>
+                <button type="button" id="clearFoodBtn">Clear Food</button>
+            </div>
+            <div id="todayFood" class="today-food-list">
+                <p>No food added yet.</p>
+            </div>
+        </section>
 
-        <div class="summary-card">
-            <span>💪</span>
-            <h3>Protein</h3>
-            <p>
-                <strong id="proteinValue">0</strong> g
-            </p>
-            <small>Daily target: 60 g</small>
-        </div>
+        <section class="water-section">
+            <h2>Water Tracker 💧</h2>
+            <p>Water consumed today: <strong id="waterValueDisplay">0 ml</strong></p>
 
-        <div class="summary-card">
-            <span>🥑</span>
-            <h3>Carbohydrates</h3>
-            <p>
-                <strong id="carbsValue">0</strong> g
-            </p>
-            <small>Daily target: 250 g</small>
-        </div>
+            <div class="water-buttons">
+                <button type="button" class="water-btn" data-water="250">+250 ml</button>
+                <button type="button" class="water-btn" data-water="500">+500 ml</button>
+                <button type="button" class="water-btn" data-water="750">+750 ml</button>
+                <button type="button" id="resetWater">Reset Water</button>
+            </div>
+        </section>
 
-        <div class="summary-card">
-            <span>💧</span>
-            <h3>Water</h3>
-            <p>
-                <strong id="waterValue">0</strong> ml
-            </p>
-            <small>Daily target: 2000 ml</small>
-        </div>
+        <section class="nutrition-score-section">
+            <h2>Nutrition Score</h2>
+            <div class="nutrition-score">
+                <span id="nutritionScore">0</span><span>/100</span>
+            </div>
+            <p id="scoreMessage">Start adding your food and water.</p>
+        </section>
 
-    </section>
-
-
-    <!-- SEARCH -->
-
-    <section class="section-card">
-
-        <h2>🔍 Search Food</h2>
-
-        <div class="search-box">
-
-            <input
-                type="text"
-                id="foodSearch"
-                placeholder="Search food..."
-            >
-
-            <button id="searchBtn" class="primary-btn">
-                Search
-            </button>
-
-        </div>
-
-        <p id="searchMessage"></p>
-
-        <div id="foodResults" class="food-grid"></div>
-
-    </section>
-
-
-    <!-- TODAY'S FOOD -->
-
-    <section class="section-card">
-
-        <div class="section-title">
-
-            <h2>🍽️ Today's Food</h2>
-
-            <button id="clearFoodBtn" class="small-btn">
-                Clear
-            </button>
-
-        </div>
-
-        <div id="todayFood" class="today-food">
-
-            <p class="empty-text">
-                No food added yet.
+        <section class="suggestions-section">
+            <h2>Personalized Nutrition Analysis 🥗</h2>
+            <p id="personalizedSummary">
+                Complete your profile to get personalized suggestions.
             </p>
 
-        </div>
+            <div class="suggestions-grid">
 
-    </section>
+                <article class="suggestion-card">
+                    <h3>⚖️ BMI & Weight Goal</h3>
+                    <p id="weightAnalysis">Complete your profile.</p>
+                </article>
 
+                <article class="suggestion-card">
+                    <h3>⚠️ Foods to Limit</h3>
+                    <div id="foodsToLimit">
+                        <p>Your food analysis will appear here.</p>
+                    </div>
+                </article>
 
-    <!-- WATER -->
+                <article class="suggestion-card">
+                    <h3>🚫 Allergy Foods</h3>
+                    <div id="allergyFoods">
+                        <p>Enter allergies in your profile.</p>
+                    </div>
+                </article>
 
-    <section class="section-card">
+                <article class="suggestion-card">
+                    <h3>🥗 Foods to Consider</h3>
+                    <div id="foodsToConsider">
+                        <p>Your personalized suggestions will appear here.</p>
+                    </div>
+                </article>
 
-        <h2>💧 Water Tracker</h2>
+                <article class="suggestion-card daily-analysis-card">
+                    <h3>📊 Daily Intake Analysis</h3>
+                    <div id="dailyIntakeAnalysis">
+                        <p>Add food to see your daily analysis.</p>
+                    </div>
+                </article>
 
-        <div class="water-buttons">
+            </div>
+        </section>
 
-            <button class="water-btn" data-water="250">
-                +250 ml
-            </button>
+    </main>
 
-            <button class="water-btn" data-water="500">
-                +500 ml
-            </button>
+    <footer class="footer">
+        <p>Track your food, monitor your nutrition, and stay healthy.</p>
+        <p>&copy; 2026 NutriTrack. All rights reserved.</p>
+    </footer>
 
-            <button class="water-btn" data-water="750">
-                +750 ml
-            </button>
-
-            <button id="resetWater" class="small-btn">
-                Reset
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- NUTRITION SCORE -->
-
-    <section class="score-card">
-
-        <h2>⭐ Today's Nutrition Score</h2>
-
-        <div class="score-circle">
-            <span id="nutritionScore">0</span>
-            <small>/100</small>
-        </div>
-
-        <p id="scoreMessage">
-            Start adding your food to see your score.
-        </p>
-
-    </section>
-
-</main>
-    
-    <!-- FOOTER SECTION -->
-
-<footer class="footer">
-
-    <h3>🥗 NutriTrack</h3>
-
-    <p>
-        Track your food, monitor your nutrition,
-        and stay healthy.
-    </p>
-
-    <div class="footer-links">
-        <a href="dashboard.html">Home</a>
-        <a href="contact.html">Contact Us</a>
-    </div>
-
-    <p class="copyright">
-        &copy2026 NutriTrack. All rights reserved.
-    </p>
-
-</footer>
-
-
-<script src="dashboard.js"></script>
-
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 </html>

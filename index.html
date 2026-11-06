@@ -5,38 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutriTrack - Login</title>
     <link rel="stylesheet" href="style.css">
+    <script src="auth.js" defer></script>
 </head>
 
 <body class="auth-body">
 
-<div class="auth-container">
+    <main class="auth-container">
+        <header class="brand">
+            <div class="logo" >🥗</div>
+            <h1>NutriTrack</h1>
+            <p>Your Personal Nutrition Tracker</p>
+        </header>
 
-    <div class="brand">
-        <div class="logo">🥗</div>
-        <h1>NutriTrack</h1>
-        <p>Your Personal Nutrition Tracker</p>
-    </div>
+        <form id="loginForm" >
+            <label for="loginEmail">Email</label>
+            <input
+                type="email"
+                id="loginEmail"
+                name="email"
+                placeholder="Enter your email"
+                autocomplete="email"
+                maxlength="254"
+                required
+            >
 
-    <form id="loginForm">
+            <label for="loginPassword">Password</label>
+            <input
+                type="password"
+                id="loginPassword"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+            >
 
-        <label>Email</label>
-        <input type="email" id="loginEmail" placeholder="Enter your email">
+            <p id="loginError" class="error"></p>
 
-        <label>Password</label>
-        <input type="password" id="loginPassword" placeholder="Enter your password">
+            <button type="submit" class="primary-btn">Login</button>
+        </form>
 
-        <p id="loginError" class="error"></p>
+        <p class="switch-text">
+            Don't have an account?
+            <a href="signup.html">Create Account</a>
+        </p>
+    </main>
 
-        <button type="submit" class="primary-btn">Login</button>
-
-    </form>
-
-    <p class="switch-text">
-        Don't have an account?
-        <a href="signup.html">Create Account</a>
-    </p>
-
-</div>
-<script src="auth.js"></script>
 </body>
 </html>

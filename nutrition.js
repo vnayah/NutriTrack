@@ -1,10 +1,8 @@
 "use strict";
 function calculateBMI(person) {
-    const heightInMeters = person.height / 100;
-    const bmi = person.weight / (heightInMeters * heightInMeters);
-    return Number(bmi.toFixed(2));
+    const height = person.height / 100;
+    return Number((person.weight / (height * height)).toFixed(2));
 }
-// Example
 const person = {
     weight: 55,
     height: 160

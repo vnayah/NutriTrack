@@ -1,101 +1,126 @@
-// EmailJS initialization
 
-emailjs.init({
-    publicKey: "wCNQYOVIOjxSk6yAV"
-});
+"use strict";
 
+// Original EmailJS configuration — unchanged
+const EMAILJS_PUBLIC_KEY = "wCNQYOVIOjxSk6yAV";
+const EMAILJS_SERVICE_ID = "service_h1zm66m";
+const EMAILJS_TEMPLATE_ID = "template_jr8ffw4";
 
-const contactForm =
-    document.getElementById("contactForm");
+const contactForm = document.getElementById("contactForm");
+const contactName = document.getElementById("contactName");
+const contactEmail = document.getElementById("contactEmail");
+const contactMessage = document.getElementById("contactMessage");
+const contactError = document.getElementById("contactError");
+const emailStatus = document.getElementById("emailStatus");
+const contactSubmitBtn = document.getElementById("contactSubmitBtn");
 
+let emailJsInitialized = false;
 
-contactForm.addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
-
-    const name =
-        document.getElementById("contactName").value.trim();
-
-    const email =
-        document.getElementById("contactEmail").value.trim();
-
-    const message =
-        document.getElementById("contactMessage").value.trim();
-
-    const error =
-        document.getElementById("contactError");
-
-    const status =
-        document.getElementById("emailStatus");
-
-    //Clear previous message
-    error.textContent = "";
-    status.textContent = "";
-
-
-    // FORM VALIDATION
-
-    if (name === "" || email === "" || message === "") {
-
-        error.textContent =
-            "Please fill all fields.";
-
-        return;
+function initializeEmailJS() {
+    if (emailJsInitialized) {
+        return true;
     }
 
-
-    if (!email.includes("@")) {
-
-        error.textContent =
-            "Please enter a valid email.";
-
-        return;
+    if (typeof emailjs === "undefined") {
+        return false;
     }
 
+    try {
+        emailjs.init({
+            publicKey: EMAILJS_PUBLIC_KEY
+        });
 
-    status.textContent =
-        "Sending message...";
+        emailJsInitialized = true;
+        return true;
+    } catch (error) {
+        console.error("EmailJS initialization failed:", error);
+        return false;
+    }
+}
 
+function showContactError(message) {
+    if (contactError) {
+        contactError.textContent = message;
+    }
+}
 
-    // EMAILJS
+function showEmailStatus(message) {
+    if (emailStatus) {
+        emailStatus.textContent = message;
+    }
+}
 
-    emailjs.sendForm(
-        "service_h1zm66m",
-        "template_jr8ffw4",
-        contactForm
-    )
-    .then(function() {
+if (contactForm) {
+    contactForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-        status.textContent =
-            "Message sent successfully! ✅";
+        showContactError("");
+        showEmailStatus("");
 
-        contactForm.reset();
+        const name = contactName.value.trim();
+        const email = contactEmail.value.trim();
+        const message = contactMessage.value.trim();
 
-    })
-    .catch(function(error) {
+        if (!name || !email || !message) {
+            showContactError("Please fill in all fields.");
+            return;
+        }
 
-        console.error(error);
+        if (name.length > 100) {
+            showContactError("Name must be 100 characters or fewer.");
+            return;
+        }
 
-        status.textContent =
-            "Failed to send message.";
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showContactError("Please enter a valid email address.");
+            return;
+        }
 
+        if (email.length > 254) {
+            showContactError("Email address is too long.");
+            return;
+        }
+
+        if (message.length > 3000) {
+            showContactError("Message must be 3000 characters or fewer.");
+            return;
+        }
+
+        if (!initializeEmailJS()) {
+            showContactError(
+                "Email service is unavailable. Please refresh and try again."
+            );
+            return;
+        }
+
+        if (contactSubmitBtn) {
+            contactSubmitBtn.disabled = true;
+            contactSubmitBtn.textContent = "Sending...";
+        }
+
+        showEmailStatus("Sending message...");
+
+        try {
+            await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                contactForm
+            );
+
+            showEmailStatus("Message sent successfully! ✅");
+            contactForm.reset();
+        } catch (error) {
+            console.error("Email sending failed:", error);
+
+            showEmailStatus("");
+            showContactError(
+                "Failed to send message. Please try again."
+            );
+        } finally {
+            if (contactSubmitBtn) {
+                contactSubmitBtn.disabled = false;
+                contactSubmitBtn.textContent = "Send Message";
+            }
+        }
     });
-
-});
-    const logoutBtn =document.getElementById("logoutBtn");
-
-
-if (logoutBtn) {
-
-    logoutBtn.addEventListener("click", function() {
-
-        localStorage.removeItem("loggedIn");
-
-        localStorage.removeItem("currentUser");
-
-        window.location.href = "index.html";
-
-    });
-
-}  
+}

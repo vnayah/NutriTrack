@@ -5,45 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutriTrack - Signup</title>
     <link rel="stylesheet" href="style.css">
+    <script src="auth.js" defer></script>
 </head>
 
 <body class="auth-body">
 
-<div class="auth-container">
+    <main class="auth-container">
+        <header class="brand">
+            <div class="logo">🥗</div>
+            <h1>NutriTrack</h1>
+            <p>Create your personal nutrition account</p>
+        </header>
 
-    <div class="brand">
-        <div class="logo">🥗</div>
-        <h1>NutriTrack</h1>
-        <p>Create your personal nutrition account</p>
-    </div>
+        <form id="signupForm">
 
-    <form id="signupForm">
+            <label for="signupName">Full Name</label>
+            <input
+                type="text"
+                id="signupName"
+                name="name"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                maxlength="100"
+                required
+            >
 
-        <label>Full Name</label>
-        <input type="text" id="signupName" placeholder="Enter your name">
+            <label for="signupEmail">Email</label>
+            <input
+                type="email"
+                id="signupEmail"
+                name="email"
+                placeholder="Enter your email"
+                autocomplete="email"
+                maxlength="254"
+                required
+            >
 
-        <label>Email</label>
-        <input type="email" id="signupEmail" placeholder="Enter your email">
+            <label for="signupPassword">Password</label>
+            <input
+                type="password"
+                id="signupPassword"
+                name="password"
+                placeholder="Minimum 6 characters"
+                autocomplete="new-password"
+                minlength="6"
+                required
+            >
 
-        <label>Password</label>
-        <input type="password" id="signupPassword" placeholder="Minimum 6 characters">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Re-enter your password"
+                autocomplete="new-password"
+                minlength="6"
+                required
+            >
 
-        <label>Confirm Password</label>
-        <input type="password" id="confirmPassword" placeholder="Confirm password">
+            <p
+                id="signupError"
+                class="error"
+                role="alert"
+                aria-live="polite"
+            ></p>
 
-        <p id="signupError" class="error"></p>
+            <button type="submit" class="primary-btn">
+                Create Account
+            </button>
 
-        <button type="submit" class="primary-btn">Sign Up</button>
+        </form>
 
-    </form>
+        <p class="switch-text">
+            Already have an account?
+            <a href="index.html">Login</a>
+        </p>
+    </main>
 
-    <p class="switch-text">
-        Already have an account?
-        <a href="index.html">Login</a>
-    </p>
-
-</div>
-
-<script src="auth.js"></script>
 </body>
 </html>
